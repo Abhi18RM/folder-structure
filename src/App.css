@@ -48,3 +48,9 @@
 .symbol {
   cursor: pointer;
 }
+
+.folder {
+  padding-left: 5px;
+  width: 15px;
+  height: 15px;
+}
