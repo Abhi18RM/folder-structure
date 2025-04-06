@@ -32,7 +32,19 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
+}
+
+
+.container {
+  text-align: left;
+  padding-left: 20px;
+  font-size: medium;
+}
+
+.symbol {
+  cursor: pointer;
 }

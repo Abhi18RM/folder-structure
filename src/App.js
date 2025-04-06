@@ -1,25 +1,47 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import "./App.css";
+import data from "./data.json";
+
+const FolderRecursion = ({ data }) => {
+    const [isExpanded, setIsExpanded] = useState({});
+    return (
+        <div>
+            {data.map((item, index) => {
+                return (
+                    <div className="container" key={index}>
+                        {item.type == "folder" && (
+                            <span
+                                className="symbol"
+                                onClick={() => {
+                                    setIsExpanded((prev) => ({
+                                        ...prev,
+                                        [item.name]: !prev[item.name],
+                                    }));
+                                }}
+                            >
+                                {isExpanded?.[item.name] ? "-" : "+"}
+                            </span>
+                        )}
+                        <span>{item.name}</span>
+                        {isExpanded?.[item.name] && item?.children && (
+                            <FolderRecursion data={item.children} />
+                        )}
+                    </div>
+                );
+            })}
+        </div>
+    );
+};
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const [folderData, setFolderData] = useState(data);
+    console.log("Folder Data:", folderData);
+    return (
+        <div className="App">
+            <h1>Folder Structure</h1>
+            <FolderRecursion data={folderData} />
+        </div>
+    );
 }
 
 export default App;

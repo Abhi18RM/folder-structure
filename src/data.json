@@ -1,0 +1,25 @@
+[
+    {
+        "id": 1,
+        "name": "public",
+        "type": "folder",
+        "children": []
+    },
+    {
+        "id": 2,
+        "name": "src",
+        "type": "folder",
+        "children": [
+            {
+                "id": 2.1,
+                "name": "App.js",
+                "type": "file"
+            }
+        ]
+    },
+    {
+        "id": 3,
+        "name": "package.json",
+        "type": "file"
+    }
+]
